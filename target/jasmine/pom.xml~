@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.qualcomm.qep</groupId>
+        <artifactId>common-pom</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.qualcomm.ssat.poc.simple</groupId>
+    <artifactId>simple-ui</artifactId>
+    <packaging>war</packaging>
+    <name>Simple UI</name>
+    <version>1.0.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.github.searls</groupId>
+                <artifactId>jasmine-maven-plugin</artifactId>
+                <version>1.0.2-beta-5</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <srcDirectoryName>/</srcDirectoryName>
+                    <jsSrcDir>${basedir}</jsSrcDir>
+                    <sourceIncludes>
+                        <include>ext-all-debug.js</include>
+                        <include>app-test.js</include>
+			<include>app/**/*.js</include>
+                    </sourceIncludes>
+                    <haltOnFailure>true</haltOnFailure>
+                    <jsTestSrcDir>${basedir}/app-test</jsTestSrcDir>
+                    <specIncludes>
+                        <include>specs/**/*.js</include>
+                    </specIncludes>
+		    <specRunnerHtmlFileName>run-tests.html</specRunnerHtmlFileName>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <properties>
+        <target.jdk>1.6</target.jdk>
+        <build.version>${pom.version}</build.version>
+    </properties>
+</project>
+
